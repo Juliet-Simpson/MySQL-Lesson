@@ -13,10 +13,8 @@ connection = pymysql.connect(host='localhost',
                              db='Chinook')
 
 try:
-    # Run a query
     with connection.cursor() as cursor:
-        row = ("Bob", 21, "1990-02-06 23:04:56")
-        cursor.execute("INSERT INTO Friends VALUES (%s, %s, %s);", row)
+        cursor.execute("UPDATE Friends SET age = 22 WHERE name = 'bob';")
         connection.commit()
 finally:
     # Close the connection, regardless of whether or not the above was successful
